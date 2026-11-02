@@ -54,7 +54,10 @@ jobs:
         run: |
           mkdir -p dist
           APK=web/android/app/build/outputs/apk/release/app-release.apk
-          "$ANDROID_HOME"/build-tools/*/apksigner verify "$APK"
+          "$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)/apksigner" verify "$APK"
+          for f in vendor/ort.wasm.min.js vendor/plotly.min.js model/manifest.json samples/box_held_out.npy; do
+            unzip -l "$APK" | grep -q "assets/public/$f"
+          done
           cp "$APK" "dist/DeepSonar3D-$VERSION.apk"
           (cd dist && sha256sum "DeepSonar3D-$VERSION.apk" > "DeepSonar3D-$VERSION.apk.sha256")
       - uses: actions/upload-artifact@v4
