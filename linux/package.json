@@ -1,0 +1,14 @@
+{
+  "name": "deepsonar-3d",
+  "productName": "DeepSonar 3D",
+  "version": "4.0.0",
+  "description": "One raw scan in, four 3D views out. Runs on this computer.",
+  "author": "DeepSonar project team",
+  "main": "main.js",
+  "scripts": {
+    "dist": "bash build.sh"
+  },
+  "devDependencies": {
+    "electron": "37.2.0"
+  }
+}

@@ -1,0 +1,104 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+env:
+  VERSION: ${{ github.ref_name }}
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: android-actions/setup-android@v3
+      - run: npm ci
+        working-directory: web
+      - run: npx cap sync android
+        working-directory: web
+      - name: Restore the signing key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > web/android/app/release.keystore
+          else
+            # No release key configured: sign with a key made for this build only.
+            echo "::warning::Signing with a temporary key. Set the ANDROID_* secrets to use the release key."
+            STORE_PASSWORD=$(openssl rand -hex 24); KEY_PASSWORD=$STORE_PASSWORD; KEY_ALIAS=deepsonar
+            keytool -genkeypair -noprompt -keystore web/android/app/release.keystore -storetype PKCS12 \
+              -storepass "$STORE_PASSWORD" -keypass "$KEY_PASSWORD" -alias "$KEY_ALIAS" \
+              -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=DeepSonar 3D"
+          fi
+          {
+            echo 'storeFile=release.keystore'
+            echo "storePassword=$STORE_PASSWORD"
+            echo "keyAlias=$KEY_ALIAS"
+            echo "keyPassword=$KEY_PASSWORD"
+          } > web/android/keystore.properties
+      - run: chmod +x gradlew && ./gradlew assembleRelease --no-daemon
+        working-directory: web/android
+      - name: Check the signature and name the APK
+        run: |
+          mkdir -p dist
+          APK=web/android/app/build/outputs/apk/release/app-release.apk
+          "$ANDROID_HOME"/build-tools/*/apksigner verify "$APK"
+          cp "$APK" "dist/DeepSonar3D-$VERSION.apk"
+          (cd dist && sha256sum "DeepSonar3D-$VERSION.apk" > "DeepSonar3D-$VERSION.apk.sha256")
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android
+          path: dist/*
+          retention-days: 7
+  linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+        working-directory: linux
+      - name: Install appimagetool
+        run: |
+          sudo apt-get update && sudo apt-get install -y rsync desktop-file-utils
+          sudo wget -qO /usr/local/bin/appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
+          sudo chmod +x /usr/local/bin/appimagetool
+      - run: bash linux/build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux
+          path: dist/*
+          retention-days: 7
+  publish:
+    needs: [android, linux]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true
+          body: |
+            On-device 3D object completion from one hand-held time-of-flight scan.
+
+            - `.apk`: Android 6 or later, about 130 MB. Enable installs from unknown sources.
+            - `.AppImage`: Linux x86-64. `chmod +x`, then run it.
+            - Everything runs on your device. The back and hidden sides are predicted, not measured.

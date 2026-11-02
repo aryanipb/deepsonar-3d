@@ -1,0 +1,61 @@
+run,cd_vs_constructed_target_mm,object,observed_to_output_mm,output_depth_m_unmeasured,output_height_m,output_width_m,session,target_registration_median_mm,target_source,used_in_training
+final1,,BOTTLE,7.9,0.0766,0.235,0.0754,scan_20261030_122622,,,False
+final1,,BOTTLE,13.11,0.0664,0.2375,0.0617,scan_20261030_122735,,,False
+final1,,BOTTLE,14.87,0.0737,0.2699,0.0697,scan_20261030_122907,,,False
+final1,,BOTTLE,10.16,0.127,0.2445,0.0748,scan_20261030_123028,,,False
+final1,,BOTTLE,6.46,0.161,0.2383,0.0906,scan_20261030_123146,,,False
+final1,,BOTTLE,14.57,0.0724,0.2366,0.0643,scan_20261030_123259,,,False
+final1,,BOTTLE,6.82,0.0572,0.2468,0.0382,scan_20261030_123523,,,False
+final1,,BOTTLE,18.52,0.0656,0.2439,0.0608,scan_20261030_123658,,,False
+final1,,BOTTLE,11.95,0.0535,0.2595,0.0481,scan_20261030_123815,,,False
+final1,,BOX,7.87,0.1801,0.2351,0.1733,scan_20261030_114126,,,False
+final1,,BOX,10.55,0.1837,0.2041,0.215,scan_20261030_115102,,,False
+final1,,BOX,5.05,0.1647,0.2218,0.153,scan_20261030_115330,,,False
+final1,,BOX,10.18,0.1526,0.2147,0.1601,scan_20261030_115840,,,False
+final1,,BOX,11.49,0.1443,0.2156,0.1481,scan_20261030_120051,,,False
+final1,,BOX,7.4,0.2084,0.2257,0.198,scan_20261030_120408,,,False
+final1,,BOX,5.19,0.2258,0.2037,0.2166,scan_20261030_120745,,,False
+final1,,BOX,13.08,0.1202,0.2243,0.1156,scan_20261030_121055,,,False
+final1,,BOX,6.76,0.1675,0.1986,0.1595,scan_20261030_121223,,,False
+final1,,BOX,5.05,0.1575,0.2107,0.1688,scan_20261030_121457,,,False
+final1,,BOX,4.69,0.1677,0.2167,0.1817,scan_20261030_121600,,,False
+final4,1.17,BOTTLE,11.65,0.0709,0.2268,0.0704,scan_20261030_122622,10.74,parametric object registered to the scan's front face,True
+final4,1.09,BOTTLE,11.38,0.0715,0.2296,0.0717,scan_20261030_122735,10.11,parametric object registered to the scan's front face,True
+final4,1.02,BOTTLE,9.71,0.0687,0.2201,0.0688,scan_20261030_122907,8.72,parametric object registered to the scan's front face,True
+final4,,BOTTLE,0.56,0.0904,0.2423,0.0677,scan_20261030_123028,,,True
+final4,1.06,BOTTLE,11.85,0.0717,0.2302,0.072,scan_20261030_123146,11.0,parametric object registered to the scan's front face,True
+final4,1.14,BOTTLE,10.61,0.0709,0.2284,0.0708,scan_20261030_123259,9.54,parametric object registered to the scan's front face,True
+final4,,BOTTLE,0.5,0.0788,0.2302,0.0503,scan_20261030_123523,,,True
+final4,1.06,BOTTLE,10.61,0.0725,0.2327,0.0725,scan_20261030_123658,9.02,parametric object registered to the scan's front face,True
+final4,4.94,BOTTLE,9.85,0.0699,0.2244,0.0692,scan_20261030_123815,9.51,parametric object registered to the scan's front face,False
+final4,,BOX,1.72,0.0819,0.2304,0.1869,scan_20261030_114126,,,True
+final4,,BOX,1.35,0.0778,0.2006,0.1589,scan_20261030_115102,,,True
+final4,,BOX,1.32,0.0707,0.2216,0.1612,scan_20261030_115330,,,True
+final4,,BOX,1.39,0.0579,0.2121,0.1696,scan_20261030_115840,,,True
+final4,,BOX,1.55,0.0593,0.2172,0.1589,scan_20261030_120051,,,True
+final4,,BOX,1.5,0.0903,0.2225,0.1528,scan_20261030_120408,,,True
+final4,,BOX,1.1,0.0914,0.1928,0.1638,scan_20261030_120745,,,True
+final4,,BOX,0.88,0.0608,0.2045,0.1212,scan_20261030_121055,,,True
+final4,,BOX,1.25,0.0936,0.2091,0.1436,scan_20261030_121223,,,True
+final4,,BOX,1.28,0.0781,0.2093,0.1561,scan_20261030_121457,,,True
+final4,,BOX,3.26,0.078,0.214,0.1592,scan_20261030_121600,,,False
+final7,1.05,BOTTLE,11.77,0.0709,0.228,0.0707,scan_20261030_122622,10.74,parametric object registered to the scan's front face,True
+final7,1.08,BOTTLE,11.45,0.0719,0.2301,0.0719,scan_20261030_122735,10.11,parametric object registered to the scan's front face,True
+final7,0.93,BOTTLE,9.8,0.0689,0.2209,0.0693,scan_20261030_122907,8.72,parametric object registered to the scan's front face,True
+final7,,BOTTLE,0.51,0.0905,0.2423,0.068,scan_20261030_123028,,,True
+final7,1.06,BOTTLE,11.85,0.0714,0.2309,0.0721,scan_20261030_123146,11.0,parametric object registered to the scan's front face,True
+final7,1.05,BOTTLE,10.65,0.0711,0.2287,0.0711,scan_20261030_123259,9.54,parametric object registered to the scan's front face,True
+final7,,BOTTLE,0.42,0.0782,0.2301,0.0497,scan_20261030_123523,,,True
+final7,0.97,BOTTLE,10.73,0.0728,0.2336,0.0729,scan_20261030_123658,9.02,parametric object registered to the scan's front face,True
+final7,4.84,BOTTLE,9.59,0.069,0.2265,0.0685,scan_20261030_123815,9.51,parametric object registered to the scan's front face,False
+final7,1.33,BOX,6.05,0.0631,0.2349,0.1847,scan_20261030_114126,5.2,parametric object registered to the scan's front face,True
+final7,1.25,BOX,7.33,0.0524,0.2343,0.1858,scan_20261030_115102,6.15,parametric object registered to the scan's front face,True
+final7,1.26,BOX,5.46,0.0687,0.2343,0.1834,scan_20261030_115330,4.67,parametric object registered to the scan's front face,True
+final7,1.21,BOX,5.19,0.0518,0.2345,0.1872,scan_20261030_115840,4.73,parametric object registered to the scan's front face,True
+final7,1.31,BOX,5.41,0.0638,0.2346,0.1838,scan_20261030_120051,5.1,parametric object registered to the scan's front face,True
+final7,1.31,BOX,7.66,0.0689,0.2345,0.1836,scan_20261030_120408,5.9,parametric object registered to the scan's front face,True
+final7,1.28,BOX,6.51,0.0727,0.2343,0.1809,scan_20261030_120745,5.86,parametric object registered to the scan's front face,True
+final7,1.22,BOX,4.65,0.077,0.2351,0.1825,scan_20261030_121055,4.11,parametric object registered to the scan's front face,True
+final7,1.27,BOX,8.48,0.0911,0.2346,0.1761,scan_20261030_121223,6.66,parametric object registered to the scan's front face,True
+final7,1.26,BOX,6.38,0.0694,0.2347,0.1835,scan_20261030_121457,5.5,parametric object registered to the scan's front face,True
+final7,3.14,BOX,6.71,0.0679,0.243,0.1894,scan_20261030_121600,6.02,parametric object registered to the scan's front face,False

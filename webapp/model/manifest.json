@@ -1,0 +1,1 @@
+{"size": 139322217, "chunks": ["adapointr.onnx.part0", "adapointr.onnx.part1", "adapointr.onnx.part2"], "version": "ck-1f3accbf67b5", "checkpoint": "adapointr_final.pth", "stage": "final", "frame": "canonical", "ckpt_sha256": "ddfaa654b62dd0e294eba887e62a9e558a61a55ed642b1b1b5d0f85083448895", "step": 138000, "real_sessions_scored": true}

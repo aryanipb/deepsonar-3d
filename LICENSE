@@ -1,0 +1,9 @@
+Copyright (c) 2026 Aryan Babar. All rights reserved.
+
+This repository is published so it can be read, run and evaluated. No licence is granted to
+copy, modify, distribute or use it commercially without written permission from the author.
+
+Third-party components keep their own licences:
+
+  majproj/model/        AdaPoinTr and PoinTr, MIT, see majproj/model/LICENSE_PoinTr
+  webapp/vendor/        ONNX Runtime Web (MIT) and Plotly.js (MIT)

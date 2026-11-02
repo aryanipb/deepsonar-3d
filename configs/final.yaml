@@ -1,0 +1,73 @@
+# Final AdaPoinTr fine-tune. Read by scripts/gen_final.py, majproj/train_final.py and modal_final.py.
+# The sha256 of this file is recorded in the dataset manifest and in every checkpoint.
+
+seed: 20261030
+
+gen:
+  root: ds_final                 # directory on the Volume
+  per_shard: 256                 # attempted scans per shard (rejected ones are skipped)
+  workers: 16                    # processes inside the 16 core container
+  shards: {train: 200, val: 8, test: 8}
+  seg_tolerance_m: 0.03          # a cleaned point counts as "on the object" within this distance of the true surface
+  max_error_rate: 0.05           # a shard with more simulator or cleaner exceptions than this fails loudly
+  kinds:                         # sampling weight of each simulated kind
+    cuboid: 3
+    cube: 1
+    slab: 1
+    tower: 1
+    bottle: 3
+    wavy_bottle: 2
+    can: 1
+    jar: 1
+    rod: 1
+    pipe: 1
+
+train:
+  batch_size: 16
+  lr: 1.0e-4
+  weight_decay: 5.0e-4
+  warmup_steps: 500
+  lr_floor: 0.02                 # final LR as a fraction of `lr`
+  max_steps: 60000               # the LR cosine ends at max_steps or at the wall limit, whichever comes first
+  grad_clip: 10.0
+  amp: true
+  amp_dtype: float16             # bfloat16 rounds output coordinates to about 0.004 units, too coarse for the targets
+  ema_decay: 0.999
+  eval_every: 2000
+  ckpt_every: 2000
+  log_every: 100
+  eval_batch: 32
+  min_seg_frac: 0.5              # TRAIN split only: drop scans where the cleaner kept mostly non-object points
+  final_reserve_s: 240           # the loop stops this long before the wall limit, for the test pass and the last save
+  max_bad_steps: 20              # abort after this many consecutive non-finite losses
+
+augment:
+  mirror_p: 0.5
+  yaw_deg: 10.0                  # frame error only: applied to partial and target together
+  drop_p: 0.5
+  drop_keep: [0.5, 1.0]
+  crop_p: 0.3                    # half plane across the seen face
+  crop_keep: [0.6, 1.0]
+  hole_p: 0.3                    # a local hole in the seen face
+  hole_keep: [0.7, 1.0]
+  depth_copy_p: 0.5
+  depth_copy_frac: [0.05, 0.3]
+  depth_copy_m: [0.01, 0.06]     # hand drift along the view direction, metres
+  jitter_sigma: [0.0, 0.01]      # canonical units, drawn per scan, partial only
+  jitter_clip: 0.03
+  scale: [0.95, 1.05]            # applied to partial and target together, after the frame is recomputed
+
+real:
+  enabled: false                 # the fit entrypoint turns this on for the real-domain stage
+  batch_size: 4                  # added to each batch
+  weight: 0.5
+  trim: 0.1                      # the worst 10 % of observed points in each scan do not pull on the output
+  # Fixed before any result was seen: the last session in time of each object. These sessions never enter training
+  # or model selection.
+  holdout: [scan_20261030_121600, scan_20261030_123815]
+  # Full targets for real scans of a KNOWN object (majproj.real_targets): {object: parts json}. A session whose
+  # registration passes trains with the two-sided loss against the registered surface; others keep the one-sided loss.
+  # Empty by default; the stage-2 legs set {BOTTLE: configs/real_bottle_parts.json}. heights: {object: metres} measured
+  # with a ruler, used as the registration scale when given (else the seen face height).
+  targets: {}
+  heights: {}

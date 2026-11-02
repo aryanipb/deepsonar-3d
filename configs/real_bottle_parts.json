@@ -1,0 +1,114 @@
+{
+ "object": "red plastic water bottle with screw cap",
+ "image_box": [
+  432,
+  263,
+  694,
+  1098
+ ],
+ "parts": [
+  {
+   "name": "bottle",
+   "kind": "revolve",
+   "center": [
+    0,
+    417.5,
+    0
+   ],
+   "size": [
+    262,
+    835,
+    215
+   ],
+   "rotation_deg": [
+    0,
+    0,
+    0
+   ],
+   "profile": [
+    [
+     0.0,
+     0.68
+    ],
+    [
+     0.02,
+     0.75
+    ],
+    [
+     0.05,
+     0.82
+    ],
+    [
+     0.12,
+     0.85
+    ],
+    [
+     0.24,
+     0.87
+    ],
+    [
+     0.36,
+     0.86
+    ],
+    [
+     0.48,
+     0.99
+    ],
+    [
+     0.6,
+     1.0
+    ],
+    [
+     0.7,
+     0.95
+    ],
+    [
+     0.75,
+     0.8
+    ],
+    [
+     0.79,
+     0.67
+    ],
+    [
+     0.81,
+     0.61
+    ],
+    [
+     0.82,
+     0.6
+    ],
+    [
+     0.86,
+     0.6
+    ],
+    [
+     0.9,
+     0.57
+    ],
+    [
+     0.94,
+     0.5
+    ],
+    [
+     0.97,
+     0.4
+    ],
+    [
+     0.99,
+     0.2
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ]
+  }
+ ],
+ "_meta": {
+  "photo": "WhatsApp Image 2026-10-25 at 12.31.14 PM.jpeg",
+  "width": 1200,
+  "height": 1600
+ },
+ "_source": "Outline of the red flip-cap bottle (FINAL-INPUTS/BOTTLE) described from the photo WhatsApp Image 2026-10-25 at 12.31.14 PM.jpeg on 31 Oct 2026 through the 3DView prompt; units are photo pixels, only proportions are used; depth is forced to the width."
+}

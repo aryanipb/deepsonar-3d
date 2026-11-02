@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">DeepSonar 3D</string>
+    <string name="title_activity_main">DeepSonar 3D</string>
+    <string name="package_name">com.majproj.oneview3d</string>
+    <string name="custom_url_scheme">com.majproj.oneview3d</string>
+</resources>
