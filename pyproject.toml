@@ -1,0 +1,33 @@
+[project]
+name = "majproj"
+version = "0.1.0"
+description = "One-view 3D object completion from a low-resolution time-of-flight sensor"
+requires-python = ">=3.11"
+dependencies = [
+    "easydict>=1.13",
+    "einops>=0.8.2",
+    "gradio>=6.30.0",
+    "matplotlib>=3.11.2",
+    "modal>=1.6.2",
+    "numpy>=2.4.6",
+    "plotly>=7.1.0",
+    "scikit-image>=0.26.0",
+    "scikit-learn>=1.9.1",
+    "scipy>=1.17.1",
+    "torch>=2.14.1",
+]
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[dependency-groups]
+dev = [
+    "onnx>=1.23.2",
+    "onnxruntime>=1.31.0",
+    "onnxscript>=0.7.2",
+]

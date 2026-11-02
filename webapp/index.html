@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DeepSonar 3D</title>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--ink:#17191d;--mut:#62676f;--line:#dedfdb;--acc:#1d4ed8;color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root{--bg:#121316;--card:#1b1d21;--ink:#ecedef;--mut:#a0a5ad;--line:#30333a;--acc:#7aa2ff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,sans-serif}
+main{max-width:1320px;margin:0 auto;padding:16px}h1{font-size:1.35rem;margin:0}p{margin:.2em 0;color:var(--mut)}
+.pick{display:block;margin:14px 0 8px;padding:20px;border:2px dashed var(--line);border-radius:10px;background:var(--card);text-align:center;cursor:pointer}
+.pick.over{border-color:var(--acc)}.pick.off{opacity:.5;pointer-events:none}.pick b{color:var(--acc)}input{display:none}#msg{min-height:1.5em;margin:6px 0 10px}#msg.err{color:#d33}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.v{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;min-width:0}
+.v h2{font-size:.95rem;margin:0}.v p{font-size:.82rem;min-height:1.3em}.p{height:min(46vh,430px);touch-action:none}
+@media(max-width:760px){main{padding-top:44px}.grid{grid-template-columns:1fr}.p{height:62vw;min-height:300px}}
+.try{color:var(--mut);margin:0 0 6px}.try button{font:inherit;color:var(--acc);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:3px 12px;cursor:pointer}.try button:disabled{opacity:.5;cursor:default}
+</style></head><body><main>
+<h1>DeepSonar 3D</h1><p>Runs entirely on this device. The back and hidden sides are predicted, not measured.</p>
+<label class="pick off" id="pick"><input type="file" id="file"><b>Choose a raw scan (.npy)</b> or drop it here</label>
+<div class="try">No scan handy? Try a real one the model never trained on: <button data-sample="samples/box_held_out.npy" disabled>Box</button> <button data-sample="samples/bottle_held_out.npy" disabled>Bottle</button></div>
+<div id="msg">Loading the model…</div>
+<div class="grid" id="grid" hidden>
+<section class="v"><h2>1. Raw input</h2><p id="t0"></p><div class="p" id="p0"></div></section>
+<section class="v"><h2>2. Cleaned input</h2><p id="t1"></p><div class="p" id="p1"></div></section>
+<section class="v"><h2>3. Object point cloud</h2><p id="t2"></p><div class="p" id="p2"></div></section>
+<section class="v"><h2>4. 3D object</h2><p id="t3"></p><div class="p" id="p3"></div></section>
+</div></main>
+<script src="vendor/ort.wasm.min.js"></script><script src="vendor/plotly.min.js"></script><script type="module" src="app.js"></script>
+</body></html>

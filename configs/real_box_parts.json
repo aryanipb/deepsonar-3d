@@ -1,0 +1,26 @@
+{
+ "object": "tall thin vertical box (FINAL-INPUTS/BOX)",
+ "_source": "Founder 1 Nov 2026: depth very small, width medium, height large. Width 18.8 and height 23.4 cm come from the measured sessions; depth 2 cm is an ASSUMPTION chosen as the best registration fit among 2-5 cm, pending a ruler number.",
+ "parts": [
+  {
+   "name": "box",
+   "kind": "box",
+   "center": [
+    0,
+    11.7,
+    0
+   ],
+   "size": [
+    18.8,
+    23.4,
+    2.0
+   ],
+   "rotation_deg": [
+    0,
+    0,
+    0
+   ],
+   "profile": []
+  }
+ ]
+}
